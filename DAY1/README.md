@@ -96,7 +96,28 @@ The waveform confirms that the multiplexer selects the correct input based on th
 ---
 
 # 4. RTL Code Explanation
+## Verilog Design
 
+```verilog
+module good_mux (
+    input i0,
+    input i1,
+    input sel,
+    output reg y
+);
+
+always @(*)
+begin
+    if (sel)
+        y <= i1;
+    else
+        y <= i0;
+end
+
+endmodule
+```
+
+---
 ## Multiplexer Description
 
 The implemented circuit is a **2:1 Multiplexer** consisting of two data inputs, one selection input, and one output.
