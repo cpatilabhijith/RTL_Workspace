@@ -31,7 +31,7 @@ An RTL design is a Verilog description of digital hardware. It specifies how dat
 A testbench is a separate verification module that applies different input patterns to the design and checks whether the generated outputs match the expected functionality.
 
 ---
-
+![image alt](https://github.com/cpatilabhijith/RTL_Workspace/blob/main/DAY1/Testbench.png)
 # 2. Verilog Simulation Environment
 
 ## What is Icarus Verilog?
@@ -88,7 +88,7 @@ gtkwave tb_good_mux.vcd
 ```
 
 The generated waveform can now be viewed and analyzed using GTKWave.
-
+![image alt](https://github.com/cpatilabhijith/RTL_Workspace/blob/main/DAY1/mux_waveform.png)
 ### Simulation Result
 
 The waveform confirms that the multiplexer selects the correct input based on the value of the selection signal.
