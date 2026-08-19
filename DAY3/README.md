@@ -71,7 +71,7 @@ yosys
 ## Loading the Standard-Cell Library
 
 ```text
-read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 The Liberty file provides the characterization information required for technology mapping.
@@ -103,7 +103,7 @@ This removes unused wires, cells, and other unreferenced logic.
 ## Flip-Flop Mapping
 
 ```text
-dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 This maps generic flip-flops to suitable flip-flop cells available in the SKY130 library.
@@ -111,7 +111,7 @@ This maps generic flip-flops to suitable flip-flop cells available in the SKY130
 ## Technology Mapping
 
 ```text
-abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 ABC performs technology mapping and maps the synthesized logic to available standard cells.
@@ -126,7 +126,7 @@ This displays the synthesized design as a schematic.
 
 ---
 
-# 3. D3SK1 – Introduction to Optimizations
+# 3. Introduction to Optimizations
 
 Optimization allows synthesis tools to transform a complex RTL description into a simpler and more efficient hardware implementation.
 
@@ -172,7 +172,7 @@ The objective is to retain the required behavior while reducing unnecessary sequ
 
 ---
 
-# 4. D3SK2 – Combinational Logic Optimizations
+# 4. Combinational Logic Optimizations
 
 Combinational optimization simplifies logic without changing the functional behavior of the circuit.
 
@@ -214,11 +214,11 @@ Therefore, the synthesis tool can replace the conditional structure with simpler
 ### Yosys Commands
 
 ```text
-read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog opt_check.v
 synth -top opt_check
 opt_clean -purge
-abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
@@ -272,11 +272,11 @@ The constant value `1` allows the synthesis tool to simplify the original condit
 ### Yosys Commands
 
 ```text
-read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog opt_check2.v
 synth -top opt_check2
 opt_clean -purge
-abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
@@ -324,11 +324,11 @@ The nested conditional structure contains redundant logic that can be reduced by
 ### Yosys Commands
 
 ```text
-read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog opt_check3.v
 synth -top opt_check3
 opt_clean -purge
-abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
@@ -384,17 +384,17 @@ The synthesis tool can implement the functionality using a three-input AND struc
 ### Yosys Commands
 
 ```text
-read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog opt_check4.v
 synth -top opt_check4
 opt_clean -purge
-abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
 ---
 
-# 5. D3SK3 – Sequential Logic Optimizations
+# 5. Sequential Logic Optimizations
 
 Sequential optimization deals with circuits containing state elements such as flip-flops.
 
@@ -574,12 +574,12 @@ Thus, the design demonstrates how sequential elements can introduce cycle-by-cyc
 ### Yosys Commands
 
 ```text
-read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog dff_const3.v
 synth -top dff_const3
-dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 opt_clean -purge
-abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
@@ -730,17 +730,6 @@ All bits used by comparison
 All 3 flip-flops required
 ```
 
-### Yosys Commands
-
-```text
-read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-read_verilog counter_opt2.v
-synth -top counter_opt2
-dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-opt_clean -purge
-abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-show
-```
 
 ---
 
@@ -764,19 +753,19 @@ After RTL optimization, the design can be mapped to actual standard cells from t
 ### Load Library
 
 ```text
-read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 ### Map Flip-Flops
 
 ```text
-dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 ### Map Combinational Logic
 
 ```text
-abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 ### View the Final Structure
