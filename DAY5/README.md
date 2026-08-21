@@ -200,6 +200,33 @@ It is useful for:
 - Assigning vector elements
 - Repeating procedural operations
 
+### Verilog Code — mux Using `for` Loop
+
+```verilog
+module mux_for (
+    input [7:0] i,
+    input [2:0] sel,
+    output reg y
+);
+
+integer k;
+
+always @(*) begin
+    y = 1'b0;
+
+    for (k = 0; k < 8; k = k + 1) begin
+        if (sel == k)
+            y = i[k];
+    end
+end
+
+endmodule
+```
+The default assignment:
+
+```verilog
+y = 1'b0;
+```
 ### Verilog Code — Demux Using `for` Loop
 
 ```verilog
@@ -245,15 +272,14 @@ It is useful when the same hardware module needs to be instantiated multiple tim
 
 ```verilog
 module fa (
-    input a,
-    input b,
-    input cin,
-    output sum,
-    output cout
+    input  a,
+    input  b,
+    input  c,
+    output co,
+    output sum
 );
 
-assign sum  = a ^ b ^ cin;
-assign cout = (a & b) | (b & cin) | (cin & a);
+    assign {co, sum} = a + b + c;
 
 endmodule
 ```
@@ -262,42 +288,40 @@ endmodule
 
 ```verilog
 module rca (
-    input [7:0] num1,
-    input [7:0] num2,
-    input cin,
-    output [7:0] sum,
-    output cout
+    input  [7:0] num1,
+    input  [7:0] num2,
+    output [8:0] sum
 );
 
-wire [7:0] int_cout;
+    wire [7:0] int_sum;
+    wire [7:0] int_co;
 
-// First full adder
-fa u_fa0 (
-    .a(num1[0]),
-    .b(num2[0]),
-    .cin(cin),
-    .sum(sum[0]),
-    .cout(int_cout[0])
-);
+    // Instantiate LSB full adder with carry-in set to 0
+    fa u_fa_0 (
+        .a(num1[0]),
+        .b(num2[0]),
+        .c(1'b0),
+        .co(int_co[0]),
+        .sum(int_sum[0])
+    );
 
-// Replicate remaining full adders
-genvar i;
+    // Replicate hardware for bits 1 to 7 using for-generate
+    genvar i;
+    generate
+        for (i = 1; i < 8; i = i + 1) begin : fa_loop
+            fa u_fa_i (
+                .a(num1[i]),
+                .b(num2[i]),
+                .c(int_co[i-1]),
+                .co(int_co[i]),
+                .sum(int_sum[i])
+            );
+        end
+    endgenerate
 
-generate
-    for (i = 1; i < 8; i = i + 1) begin : fa_gen
-
-        fa u_fa (
-            .a(num1[i]),
-            .b(num2[i]),
-            .cin(int_cout[i-1]),
-            .sum(sum[i]),
-            .cout(int_cout[i])
-        );
-
-    end
-endgenerate
-
-assign cout = int_cout[7];
+    // Assign sum and final carry out
+    assign sum[7:0] = int_sum;
+    assign sum[8]   = int_co[7];
 
 endmodule
 ```
