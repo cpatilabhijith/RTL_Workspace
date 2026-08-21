@@ -1,6 +1,24 @@
 # DAY 5 — Optimization in Synthesis
 
+## Table of Contents
+
+1. Incomplete If Constructs — Inferred Latches
+2. Incomplete Case Constructs
+3. Overlapping Case Constructs
+4. `for` Loop vs `for generate`
+5. `for generate` Construct
+6. Difference Between `for` and `for generate`
+7. Compilation of Hierarchical Designs
+8. Important Synthesis Optimization Points
+9. Day 5 Summary
+10. Day 5 Learning Outcomes
+11. Day 5 Overall Flow
+12. Key Rules to Remember
+
+---
+
 ## 1. Incomplete If Constructs — Inferred Latches
+
 
 When an `if` statement inside a combinational `always` block does not assign an output for every possible condition, synthesis tools infer a latch.
 
