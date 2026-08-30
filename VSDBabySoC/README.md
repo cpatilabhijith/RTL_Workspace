@@ -6,13 +6,8 @@ VSDBabySoC is a compact System-on-Chip that integrates a RISC-V processor core w
 
 The work covered in this project includes RTL simulation, synthesis using Yosys, technology mapping with the Sky130 standard-cell library, generation of a synthesized netlist, inspection of the netlist, and post-synthesis simulation.
 
-<p align="center">
-  <img width="601" height="332" alt="VSDBabySoC" src="https://github.com/user-attachments/assets/21bffbe6-56b3-4b3c-a8b4-f26b8e32911c" />
-</p>
+<img width="601" height="332" alt="image" src="https://github.com/user-attachments/assets/470c9651-d1d3-4994-904d-30423a529dec" />
 
-<p align="center">
-  <sub>Source: VLSI System Design (VSD)</sub>
-</p>
 
 ---
 
@@ -93,9 +88,7 @@ A testbench is used to provide the required clock and reset signals and to obser
 
 The testbench is also configured to support both pre-synthesis and post-synthesis simulation.
 
-<p align="center">
-  <img width="1536" height="787" alt="RTL and Testbench" src="https://github.com/user-attachments/assets/21aa5837-7f28-49ee-9637-770f1f8a9d18" />
-</p>
+
 
 ---
 
@@ -140,6 +133,8 @@ The resulting waveform is opened using:
 ```bash
 gtkwave pre_synth_sim.vcd
 ```
+<img width="1920" height="412" alt="image" src="https://github.com/user-attachments/assets/46d7e0ff-fb4a-420e-bd71-32a83eb48510" />
+
 
 The waveform can be used to inspect signals such as:
 
@@ -335,6 +330,8 @@ Finally, synthesis statistics are displayed using:
 ```tcl
 stat
 ```
+<img width="1920" height="1080" alt="Screenshot 2026-08-23 134727" src="https://github.com/user-attachments/assets/5226e96a-74ad-411e-ae44-72d75817b0ff" />
+
 
 The synthesized design is written to a Verilog netlist using:
 
@@ -368,10 +365,11 @@ DAC
  v
 OUT
 ```
+<img width="1920" height="1080" alt="Screenshot 2026-08-23 140945" src="https://github.com/user-attachments/assets/3b20f815-86bc-47b0-815f-8e8d32844251" />
 
-<p align="center">
-  <img width="1536" height="787" alt="Top-Level Netlist" src="https://github.com/user-attachments/assets/9094fc42-f46b-44b7-868f-af4af9751cd2" />
-</p>
+
+<img width="1757" height="311" alt="image" src="https://github.com/user-attachments/assets/25eb38d8-4bf5-4542-b1e5-edeeed5cefc9" />
+
 
 This representation provides a simple view of the overall connectivity.
 
@@ -379,9 +377,9 @@ This representation provides a simple view of the overall connectivity.
 
 After ABC technology mapping, the internal logic is represented using a large number of Sky130 standard cells and interconnections.
 
-<p align="center">
-  <img width="1536" height="787" alt="Gate-Level Netlist" src="https://github.com/user-attachments/assets/29a5324f-1d99-42e6-b8f1-095c919b31ec" />
-</p>
+<img width="1037" height="557" alt="image" src="https://github.com/user-attachments/assets/f39f298e-e8b8-47e0-8f66-51a2afc6229c" />
+
+
 
 The mapped netlist appears much denser than the block-level representation because the internal logic has been expanded into individual technology cells.
 
@@ -429,6 +427,8 @@ The generated simulation executable is executed using:
 ```bash
 ./a.out
 ```
+<img width="1920" height="1080" alt="Screenshot 2026-08-26 180113" src="https://github.com/user-attachments/assets/4c438502-6cf1-470c-9a31-8ce2d344473a" />
+
 
 The resulting waveform is opened in GTKWave:
 
@@ -436,7 +436,8 @@ The resulting waveform is opened in GTKWave:
 gtkwave post_synth_sim.vcd
 ```
 
-<img width="1920" height="482" alt="image" src="https://github.com/user-attachments/assets/37d3c002-9a1f-431c-b8b4-463a47be4b71" />
+<img width="1920" height="482" alt="image" src="https://github.com/user-attachments/assets/bc67216a-b2f0-4583-a4f0-124bae124884" />
+
 
 ---
 
@@ -497,6 +498,8 @@ Functional Simulation
 This allows the logical behavior of the synthesized implementation to be verified.
 
 ---
+<img width="1920" height="1080" alt="Screenshot 2026-08-23 140243" src="https://github.com/user-attachments/assets/7c8bea63-bde3-4bae-bc5b-ae4c895b491b" />
+
 
 # 11. RTL vs GLS Comparison
 
