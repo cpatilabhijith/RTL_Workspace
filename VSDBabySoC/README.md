@@ -88,7 +88,7 @@ A testbench is used to provide the required clock and reset signals and to obser
 
 The testbench is also configured to support both pre-synthesis and post-synthesis simulation.
 
-
+<img width="1536" height="787" alt="image" src="https://github.com/user-attachments/assets/8c49c456-7a3c-4cdf-ab0c-14c6603c31d1" />
 
 ---
 
