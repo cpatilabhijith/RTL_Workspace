@@ -61,85 +61,7 @@ module sequence_detector (
     reg next_detected;
 
     always @(*) begin
-        next_state = 'd0;
-        next_detected = 1'b0;
-
-        case (state)
-            0: begin
-                if (din == 1'b0) begin
-                    next_state = 1;
-                    next_detected = 1'b0;
-                end else begin
-                    next_state = 0;
-                    next_detected = 1'b0;
-                end
-            end
-
-            1: begin
-                if (din == 1'b0) begin
-                    next_state = 1;
-                    next_detected = 1'b0;
-                end else begin
-                    next_state = 2;
-                    next_detected = 1'b0;
-                end
-            end
-
-            2: begin
-                if (din == 1'b0) begin
-                    next_state = 1;
-                    next_detected = 1'b0;
-                end else begin
-                    next_state = 3;
-                    next_detected = 1'b0;
-                end
-            end
-
-            3: begin
-                if (din == 1'b0) begin
-                    next_state = 1;
-                    next_detected = 1'b0;
-                end else begin
-                    next_state = 4;
-                    next_detected = 1'b0;
-                end
-            end
-
-            4: begin
-                if (din == 1'b0) begin
-                    next_state = 1;
-                    next_detected = 1'b0;
-                end else begin
-                    next_state = 5;
-                    next_detected = 1'b0;
-                end
-            end
-
-            5: begin
-                if (din == 1'b0) begin
-                    next_state = 6;
-                    next_detected = 1'b0;
-                end else begin
-                    next_state = 0;
-                    next_detected = 1'b0;
-                end
-            end
-
-            6: begin
-                if (din == 1'b0) begin
-                    next_state = 1;
-                    next_detected = 1'b0;
-                end else begin
-                    next_state = 2;
-                    next_detected = 1'b1;
-                end
-            end
-
-            default: begin
-                next_state = 'd0;
-                next_detected = 1'b0;
-            end
-        endcase
+       // code logic 
     end
 
     always @(posedge clk) begin
@@ -223,186 +145,7 @@ module tb;
         reset = 1'b0;
 
         // Test sequence
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b1);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
-        drive_bit(1'b0);
+        // sequence implementation
 
         // Final reset.
         @(negedge clk);
@@ -481,14 +224,9 @@ Found and reported 0 problems.
 | `$ _SDFF_PP0_` | 1 |
 | **Total** | **26** |
 
-> The cell names above are taken from the Yosys statistics shown in the supplied synthesis output screenshot.
+> The cell names above are taken from the Yosys statistics.
+<img width="1920" height="1080" alt="yosys_statistics" src="https://github.com/user-attachments/assets/6019d82a-37d4-4179-91df-07a44fc872f3" />
 
-### Yosys Statistics Evidence
-
-<img width="1920" height="1080" alt="outputstats" src="https://github.com/user-attachments/assets/8536b4a0-7d04-434b-8f17-1332fa17ae1e" />
-
-
-The supplied screenshot shows the synthesized `sequence_detector` module and confirms that Yosys completed the check with **0 reported problems**.
 
 ---
 
@@ -505,7 +243,7 @@ The generated logic diagram shows:
 
 ### Synthesized Logic Diagram
 
-![Synthesized logic graph](Screenshot 2026-08-29 112307.png)
+<img width="888" height="815" alt="synthesized_logic" src="https://github.com/user-attachments/assets/635f85f3-40ff-4abd-be87-05e6d20d5328" />
 
 This graph represents the synthesized gate-level structure produced by Yosys.
 
@@ -569,36 +307,7 @@ The synthesized implementation **preserves the functional behavior of the RTL de
 
 ---
 
-## 10. Repository Evidence
-
-Use the following screenshots as the supporting evidence for the flow documented in this README:
-
-1. **RTL GTKWave:** 
-
-<img width="1920" height="1080" alt="rtl_gtkwave" src="https://github.com/user-attachments/assets/02ab9d82-7eec-4597-a891-a4c3cfd1b038" />
-
-2. **GLS GTKWave:** 
-
-<img width="1920" height="1080" alt="gls_dump" src="https://github.com/user-attachments/assets/b6857f15-7c8d-4398-94cc-ae257cf75314" />
-
-3. **Yosys synthesis statistics:** 
-
-<img width="1920" height="1080" alt="yosys_statistics" src="https://github.com/user-attachments/assets/6019d82a-37d4-4179-91df-07a44fc872f3" />
-
-4. **Yosys generated logic diagram:**
-
-<img width="888" height="815" alt="synthesized_logic" src="https://github.com/user-attachments/assets/635f85f3-40ff-4abd-be87-05e6d20d5328" />
-
-5. **Yosys synthesis terminal/output:** 
-
-<img width="1920" height="1080" alt="yosys_terminal" src="https://github.com/user-attachments/assets/8c30cef8-13e1-466a-b6e1-929dc847d06d" />
-
-
-The final RTL-vs-GLS conclusion is also documented in the supplied comparison report.
-
----
-
-## 11. Result
+## 10. Result
 
 ```text
 Target sequence        : 0111101
